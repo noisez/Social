@@ -1,0 +1,30 @@
+.profile {
+  grid-area: content;
+  background-color: aqua;
+
+  .profile__header {
+    width: 100%;
+    .header__img {
+      width: 100%;
+    }
+  }
+
+  .profile__info {
+    display: flex;
+    .info__avatar {
+      max-width: 150px;
+      margin-right: 30px;
+    }
+    .avatar__img {
+      width: 100%;
+    }
+    .info__personal {}
+    .personal__name {}
+    .personal__common {}
+    .common__item {
+      margin-top: 10px;
+    }
+    .item__left {}
+    .item__right {}
+  }
+}

@@ -1,0 +1,8 @@
+.header {
+  grid-area: header;
+  background-color: chartreuse;
+  text-align: center;
+  .header__logo {
+    max-height: 101%;
+  }
+}

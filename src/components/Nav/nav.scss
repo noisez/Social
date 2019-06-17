@@ -1,0 +1,16 @@
+.nav {
+  grid-area: nav;
+  background-color: coral;
+  .nav__list {}
+  .nav__item {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  .nav__item:last-child {
+    margin-top: 25px;
+  }
+  .nav__link {
+    color: #000;
+    font-weight: 600;
+  }
+}

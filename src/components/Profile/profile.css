@@ -1,0 +1,25 @@
+.profile {
+  grid-area: content;
+  background-color: aqua;
+}
+.profile .profile__header {
+  width: 100%;
+}
+.profile .profile__header .header__img {
+  width: 100%;
+}
+.profile .profile__info {
+  display: flex;
+}
+.profile .profile__info .info__avatar {
+  max-width: 150px;
+  margin-right: 30px;
+}
+.profile .profile__info .avatar__img {
+  width: 100%;
+}
+.profile .profile__info .common__item {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=profile.css.map */

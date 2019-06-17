@@ -1,0 +1,17 @@
+.nav {
+  grid-area: nav;
+  background-color: coral;
+}
+.nav .nav__item {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.nav .nav__item:last-child {
+  margin-top: 25px;
+}
+.nav .nav__link {
+  color: #000;
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=nav.css.map */
