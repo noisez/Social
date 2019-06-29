@@ -13,4 +13,9 @@
     color: #000;
     font-weight: 600;
   }
+  .nav__link.active {
+    color: #fff;
+    cursor: default;
+    pointer-events: none;
+  }
 }

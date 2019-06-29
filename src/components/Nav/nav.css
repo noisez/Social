@@ -13,5 +13,10 @@
   color: #000;
   font-weight: 600;
 }
+.nav .nav__link.active {
+  color: #fff;
+  cursor: default;
+  pointer-events: none;
+}
 
 /*# sourceMappingURL=nav.css.map */

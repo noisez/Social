@@ -9,9 +9,9 @@ const MyPosts = () => {
                 New Post
             </div>
             <div className="my-posts__published">
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message='This is my favorite post!' likes='10'/>
+                <Post message='This is first post' likes='4'/>
+                <Post message='test' likes='0'/>
             </div>
         </div>
     )

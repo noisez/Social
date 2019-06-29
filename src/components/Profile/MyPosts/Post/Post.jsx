@@ -1,11 +1,14 @@
 import React from 'react';
 import './post.css'
 
-const Post = () => {
+const Post = (props) => {
     return (
         <div className="post">
-            <img src="https://fanparty.ru/fanclubs/highlander/gallery/343346_highlander_pic.JPG" alt="icon" className="post__img"/>
-            <p className="post__text">This is post text</p>
+            <div className="post__body">
+                <img src="https://fanparty.ru/fanclubs/highlander/gallery/343346_highlander_pic.JPG" alt="icon" className="post__img"/>
+                <p className="post__text">{props.message}</p>
+            </div>
+            <p className="post__like">Likes: <span className="like__count">{props.likes}</span></p>
         </div>
     )
 };
