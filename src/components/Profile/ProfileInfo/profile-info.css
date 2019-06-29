@@ -1,0 +1,16 @@
+.profile__info {
+  padding: 5px;
+  display: flex;
+}
+.profile__info .info__avatar {
+  max-width: 150px;
+  margin-right: 15px;
+}
+.profile__info .avatar__img {
+  width: 100%;
+}
+.profile__info .common__item {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=profile-info.css.map */

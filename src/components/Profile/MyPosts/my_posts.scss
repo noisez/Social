@@ -1,4 +1,9 @@
 .my-posts {
+  padding: 5px;
   .my-posts__new {}
+  .new__input {}
+  .new__add {
+    display: block;
+  }
   .my-posts__published {}
 }

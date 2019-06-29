@@ -1,3 +1,23 @@
-
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+.dialogs .dialogs__names {
+  padding: 10px;
+}
+.dialogs .names__item {
+  padding: 5px;
+  cursor: pointer;
+}
+.dialogs .names__item .active {
+  background: orange;
+  cursor: default;
+}
+.dialogs .dialogs__messages {
+  padding: 10px;
+}
+.dialogs .messages__item {
+  padding: 5px;
+}
 
 /*# sourceMappingURL=dialogs.css.map */
