@@ -5,6 +5,8 @@
     padding: 10px;
   }
   .names__item {
+    display: flex;
+    align-items: center;
     padding: 5px;
     cursor: pointer;
     .active {
@@ -12,10 +14,30 @@
       cursor: default;
     }
   }
+  .names__item_img {
+    max-width: 50px;
+    width: 100%;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  .names__item_link {}
+
   .dialogs__messages {
     padding: 10px;
+    max-width: 400px;
   }
   .messages__item {
     padding: 5px;
+  }
+  .messages__item_sent {
+    text-align: right;
+  }
+  .messages__item_recieved {
+    text-align: left;
+  }
+  .messages__text {
+    padding: 5px;
+    border-radius: 5px;
+    background: azure;
   }
 }
