@@ -16,13 +16,33 @@ let state = {
             {id: 5, name: 'Iron Man'},
         ],
         messagesData: [
-            {id: 1, message: 'Hi, how are you?', type: 'sent'},
-            {id: 2, message: 'Hello, i am fine.', type: 'recieved'},
-            {id: 3, message: 'Great :)', type: 'sent'},
-            {id: 4, message: 'What did you do last weekend?', type: 'recieved'},
-            {id: 5, message: 'I worked all the time.', type: 'sent'}
+            {id: 1, message: 'Hi, how are you?', type: 'sent', dialogId: 1},
+            {id: 2, message: 'Hello, i am fine.', type: 'recieved', dialogId: 1},
+            {id: 3, message: 'Great :)', type: 'sent', dialogId: 1},
+            {id: 4, message: 'What did you do last weekend?', type: 'recieved', dialogId: 1},
+            {id: 5, message: 'I worked all the time.', type: 'sent', dialogId: 1},
+            {id: 6, message: 'Hello!', type: 'sent', dialogId: 2},
+            {id: 7, message: 'Hi, nice to meet you.', type: 'recieved', dialogId: 2},
+            {id: 8, message: 'I have some new', type: 'sent', dialogId: 2},
+            {id: 9, message: 'What is it?', type: 'recieved', dialogId: 2},
+            {id: 10, message: 'I get a new job', type: 'sent', dialogId: 2},
+            {id: 1, message: 'Hey', type: 'sent', dialogId: 4},
+            {id: 12, message: 'Whats wrong?', type: 'sent', dialogId: 4},
+            {id: 13, message: 'I need some cash', type: 'recieved', dialogId: 4},
+            {id: 14, message: 'What about the sum?', type: 'sent', dialogId: 4},
+            {id: 15, message: '1000$', type: 'recieved', dialogId: 4},
+            {id: 16, message: 'No way!', type: 'sent', dialogId: 4}
         ]
     }
+};
+
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 4,
+        message: postMessage,
+        likes: '0'
+    };
+    state.profile.postsData.push(newPost);
 };
 
 export default state;
