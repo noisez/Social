@@ -11,7 +11,7 @@ const Profile = (props) => {
                 <img src="https://marin.ru/ai/1000/geo.113.thumb.big/fiji-main(pics.1).jpg" alt="icon" className="header__img"/>
             </div>
             <ProfileInfo/>
-            <MyPosts state={props.state} addPost={props.addPost}/>
+            <MyPosts profile={props.profile} addPost={props.addPost}/>
         </div>
     )
 };

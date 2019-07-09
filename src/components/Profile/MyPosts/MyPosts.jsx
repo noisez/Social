@@ -4,13 +4,15 @@ import './my_posts.css'
 
 const MyPosts = (props) => {
 
-    let postsElements = props.state.postsData.map( elem => <Post message={elem.message} likes={elem.likes}/> );
+    let postsElements = props.profile.postsData.map( elem => <Post message={elem.message} likes={elem.likes}/> );
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
         let text = newPostElement.current.value;
         props.addPost(text);
+        newPostElement.current.value = '';
+
     };
 
     return (

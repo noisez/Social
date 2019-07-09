@@ -1,10 +1,11 @@
+import {rerenderEntireTree} from "../render";
 
 let state = {
     profile: {
         postsData: [
-            {id: 1, message: 'This is my favorite post!', likes: '10'},
-            {id: 2, message: 'This is first post', likes: '4'},
-            {id: 3, message: 'test', likes: '0'}
+            {id: 1, message: 'This is my favorite post!', likes: 10},
+            {id: 2, message: 'This is first post', likes: 0},
+            {id: 3, message: 'test', likes: 0}
         ]
     },
     dialogs: {
@@ -36,13 +37,39 @@ let state = {
     }
 };
 
+export let addMessage = (message) => {
+    function randomInteger() {
+        let rand = 1 + Math.random() * 5;
+        rand = Math.floor(rand);
+        return rand;
+    }
+    let dialog = randomInteger();
+    let id = state.dialogs.messagesData[state.dialogs.messagesData.length - 1].id + 1;
+    let newMessage = {
+        id: id,
+        message: message,
+        type: 'sent',
+        dialogId: dialog
+    };
+    state.dialogs.messagesData.push(newMessage);
+    rerenderEntireTree(state, addPost , addMessage);
+};
+
 export let addPost = (postMessage) => {
+    function randomInteger() {
+        let rand = 1 + Math.random() * 10;
+        rand = Math.floor(rand);
+        return rand;
+    }
+    let likes = randomInteger();
+    let id = state.profile.postsData[state.profile.postsData.length - 1].id + 1;
     let newPost = {
-        id: 4,
         message: postMessage,
-        likes: '0'
+        id: id,
+        likes: likes
     };
     state.profile.postsData.push(newPost);
+    rerenderEntireTree(state, addPost, addMessage);
 };
 
 export default state;
