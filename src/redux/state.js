@@ -37,7 +37,7 @@ let store = {
         }
     },
     getState() {
-        return store._state;
+        return this._state;
     },
     addMessage(message) {
         function randomInteger() {
@@ -46,15 +46,15 @@ let store = {
             return rand;
         }
         let dialog = randomInteger();
-        let id = store.getState().dialogs.messagesData[store.getState().dialogs.messagesData.length - 1].id + 1;
+        let id = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id + 1;
         let newMessage = {
             id: id,
             message: message,
             type: 'sent',
             dialogId: dialog
         };
-        store.getState().dialogs.messagesData.push(newMessage);
-        store.rerenderEntireTree(store);
+        this._state.dialogs.messagesData.push(newMessage);
+        this.rerenderEntireTree(store);
     },
     addPost(postMessage) {
         function randomInteger() {
@@ -63,18 +63,18 @@ let store = {
             return rand;
         }
         let likes = randomInteger();
-        let id = store.getState().profile.postsData[store.getState().profile.postsData.length - 1].id + 1;
+        let id = this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1;
         let newPost = {
             message: postMessage,
             id: id,
             likes: likes
         };
-        store.getState().profile.postsData.push(newPost);
-        store.rerenderEntireTree(store);
+        this._state.profile.postsData.push(newPost);
+        this.rerenderEntireTree(store);
     },
     rerenderEntireTree() {},
     subscribe(observer) {
-        store.rerenderEntireTree = observer;
+        this.rerenderEntireTree = observer;
     }
 };
 
