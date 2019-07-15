@@ -36,6 +36,7 @@ let store = {
             ]
         }
     },
+<<<<<<< HEAD
     dispatch(action) {
         if (action.type === 'addMessage') {
             function randomInteger() {
@@ -73,6 +74,43 @@ let store = {
     },
     getState() {
         return this._state;
+=======
+    getState() {
+        return this._state;
+    },
+    addMessage(message) {
+        function randomInteger() {
+            let rand = 1 + Math.random() * 5;
+            rand = Math.floor(rand);
+            return rand;
+        }
+        let dialog = randomInteger();
+        let id = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id + 1;
+        let newMessage = {
+            id: id,
+            message: message,
+            type: 'sent',
+            dialogId: dialog
+        };
+        this._state.dialogs.messagesData.push(newMessage);
+        this.rerenderEntireTree(store);
+    },
+    addPost(postMessage) {
+        function randomInteger() {
+            let rand = 1 + Math.random() * 10;
+            rand = Math.floor(rand);
+            return rand;
+        }
+        let likes = randomInteger();
+        let id = this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1;
+        let newPost = {
+            message: postMessage,
+            id: id,
+            likes: likes
+        };
+        this._state.profile.postsData.push(newPost);
+        this.rerenderEntireTree(store);
+>>>>>>> 1ad0235968a64d9206db6ae08692d559fba134d0
     },
     rerenderEntireTree() {},
     subscribe(observer) {
