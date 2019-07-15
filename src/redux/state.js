@@ -36,46 +36,81 @@ let store = {
             ]
         }
     },
+    dispatch(action) {
+        if (action.type === 'addMessage') {
+            function randomInteger() {
+                let rand = 1 + Math.random() * 5;
+                rand = Math.floor(rand);
+                return rand;
+            }
+            let dialog = randomInteger();
+            let id = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id + 1;
+            let newMessage = {
+                id: id,
+                message: action.message,
+                type: 'sent',
+                dialogId: dialog
+            };
+            this._state.dialogs.messagesData.push(newMessage);
+            this.rerenderEntireTree(this);
+        }
+        else if (action.type === 'addPost') {
+            function randomInteger() {
+                let rand = 1 + Math.random() * 10;
+                rand = Math.floor(rand);
+                return rand;
+            }
+            let likes = randomInteger();
+            let id = this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1;
+            let newPost = {
+                message: action.postMessage,
+                id: id,
+                likes: likes
+            };
+            this._state.profile.postsData.push(newPost);
+            this.rerenderEntireTree(this);
+        }
+    },
     getState() {
-        return store._state;
-    },
-    addMessage(message) {
-        function randomInteger() {
-            let rand = 1 + Math.random() * 5;
-            rand = Math.floor(rand);
-            return rand;
-        }
-        let dialog = randomInteger();
-        let id = store.getState().dialogs.messagesData[store.getState().dialogs.messagesData.length - 1].id + 1;
-        let newMessage = {
-            id: id,
-            message: message,
-            type: 'sent',
-            dialogId: dialog
-        };
-        store.getState().dialogs.messagesData.push(newMessage);
-        store.rerenderEntireTree(store);
-    },
-    addPost(postMessage) {
-        function randomInteger() {
-            let rand = 1 + Math.random() * 10;
-            rand = Math.floor(rand);
-            return rand;
-        }
-        let likes = randomInteger();
-        let id = store.getState().profile.postsData[store.getState().profile.postsData.length - 1].id + 1;
-        let newPost = {
-            message: postMessage,
-            id: id,
-            likes: likes
-        };
-        store.getState().profile.postsData.push(newPost);
-        store.rerenderEntireTree(store);
+        return this._state;
     },
     rerenderEntireTree() {},
     subscribe(observer) {
-        store.rerenderEntireTree = observer;
+        this.rerenderEntireTree = observer;
     }
+    // addMessage(message) {
+    //     function randomInteger() {
+    //         let rand = 1 + Math.random() * 5;
+    //         rand = Math.floor(rand);
+    //         return rand;
+    //     }
+    //     let dialog = randomInteger();
+    //     let id = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id + 1;
+    //     let newMessage = {
+    //         id: id,
+    //         message: message,
+    //         type: 'sent',
+    //         dialogId: dialog
+    //     };
+    //     this._state.dialogs.messagesData.push(newMessage);
+    //     this.rerenderEntireTree(this);
+    // },
+    // addPost(postMessage) {
+    //     function randomInteger() {
+    //         let rand = 1 + Math.random() * 10;
+    //         rand = Math.floor(rand);
+    //         return rand;
+    //     }
+    //     let likes = randomInteger();
+    //     let id = this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1;
+    //     let newPost = {
+    //         message: postMessage,
+    //         id: id,
+    //         likes: likes
+    //     };
+    //     this._state.profile.postsData.push(newPost);
+    //     this.rerenderEntireTree(this);
+    // },
 };
 
 export default store;

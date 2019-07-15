@@ -9,8 +9,9 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
+        console.log(props.dispatch);
         let text = newPostElement.current.value;
-        props.addPost(text);
+        props.dispatch({type: 'addPost', postMessage: text});
         newPostElement.current.value = '';
 
     };

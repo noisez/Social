@@ -10,15 +10,14 @@ import Settings from './components/Settings/Settings';
 import {Route} from 'react-router-dom';
 
 
-const App = (props) => {
+const App = (props) => {о
     return (
         <div className="app-wrapper">
-            {console.log(props)}
             <Header/>
             <Nav/>
             <div className="content">
-                <Route path='/profile' render={ () => <Profile profile={props.store.getState().profile} addPost={props.store.addPost} />}/>
-                <Route path='/dialogs' render={ () => (<Dialogs state={props.store.getState().dialogs} addMessage={props.store.addMessage} />)}/>
+                <Route path='/profile' render={ () => <Profile profile={props.store.getState().profile} dispatch={props.store.dispatch.bind(props.store)} />}/>
+                <Route path='/dialogs' render={ () => (<Dialogs state={props.store.getState().dialogs} dispatch={props.store.dispatch.bind(props.store)} />)}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
