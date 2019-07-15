@@ -1,5 +1,4 @@
 import React from 'react';
-// import state, {addMessage, addPost, subscribe} from './redux/state';
 import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
