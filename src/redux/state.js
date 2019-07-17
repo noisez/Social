@@ -1,3 +1,12 @@
+const addPost = 'addPost';
+const updateNewPostText = 'updateNewPostText';
+const addMessage = 'addMessage';
+const updateNewMessageText = 'updateNewMessageText';
+
+export const addPostActionCreator = (text) => ({type: addPost, postMessage: text});
+export const updateNewPostTextActionCreator = (text) => ({type: updateNewPostText, newPostText: text});
+export const addMessageActionCreator = (text) => ({type: addMessage, message: text});
+export const updateNewMessageTextActionCreator = (text) => ({type: updateNewMessageText, newMessageText: text});
 
 let store = {
     _state: {
@@ -6,7 +15,8 @@ let store = {
                 {id: 1, message: 'This is my favorite post!', likes: 10},
                 {id: 2, message: 'This is first post', likes: 3},
                 {id: 3, message: 'test', likes: 0}
-            ]
+            ],
+            newPostText: ''
         },
         dialogs: {
             dialogsData: [
@@ -33,41 +43,40 @@ let store = {
                 {id: 14, message: 'What about the sum?', type: 'sent', dialogId: 4},
                 {id: 15, message: '1000$', type: 'recieved', dialogId: 4},
                 {id: 16, message: 'No way!', type: 'sent', dialogId: 4}
-            ]
+            ],
+            newMessageText: ''
         }
     },
     dispatch(action) {
-        if (action.type === 'addMessage') {
-            function randomInteger() {
-                let rand = 1 + Math.random() * 5;
-                rand = Math.floor(rand);
-                return rand;
-            }
-            let dialog = randomInteger();
+        if (action.type === addMessage) {
             let id = this._state.dialogs.messagesData[this._state.dialogs.messagesData.length - 1].id + 1;
             let newMessage = {
                 id: id,
                 message: action.message,
                 type: 'sent',
-                dialogId: dialog
+                dialogId: 1
             };
             this._state.dialogs.messagesData.push(newMessage);
             this.rerenderEntireTree(this);
+            this._state.dialogs.newMessageText = '';
         }
-        else if (action.type === 'addPost') {
-            function randomInteger() {
-                let rand = 1 + Math.random() * 10;
-                rand = Math.floor(rand);
-                return rand;
-            }
-            let likes = randomInteger();
+        else if (action.type === updateNewMessageText) {
+            this._state.dialogs.newMessageText = action.newMessageText;
+            this.rerenderEntireTree(this);
+        }
+        else if (action.type === addPost) {
             let id = this._state.profile.postsData[this._state.profile.postsData.length - 1].id + 1;
             let newPost = {
                 message: action.postMessage,
                 id: id,
-                likes: likes
+                likes: 0
             };
             this._state.profile.postsData.push(newPost);
+            this.rerenderEntireTree(this);
+            this._state.profile.newPostText = '';
+        }
+        else if (action.type === updateNewPostText) {
+            this._state.profile.newPostText = action.newPostText;
             this.rerenderEntireTree(this);
         }
     },
