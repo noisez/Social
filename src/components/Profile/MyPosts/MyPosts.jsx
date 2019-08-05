@@ -23,7 +23,7 @@ const MyPosts = (props) => {
     return (
         <div className="my-posts">
             <div className="my-posts__new">
-                <textarea onChange={ updateNewPostText } ref={newPostElement} placeholder="Write your message" className="new__input" value={props.profile.newPostText}></textarea>
+                <textarea onChange={ updateNewPostText } ref={newPostElement} placeholder="Write your message" className="new__input" value={props.profile.newPostText}> </textarea>
                 <button type="button" className="new__add" onClick={ addPost }>Add</button>
                 {postsElements}
             </div>
