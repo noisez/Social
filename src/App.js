@@ -1,5 +1,6 @@
 import React from 'react';
 import './main.css';
+import Homepage from "./components/Homepage/Homepage";
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
@@ -16,6 +17,7 @@ const App = (props) => {
             <Header/>
             <Nav/>
             <div className="content">
+                <Route exact path='/' component={Homepage}/>
                 <Route path='/profile' render={ () => <Profile profile={props.state.profilePage} dispatch={props.dispatch} />}/>
                 <Route path='/dialogs' render={ () => (<Dialogs dialogs={props.state.dialogsPage} dispatch={props.dispatch} />)}/>
                 <Route path='/news' component={News}/>
