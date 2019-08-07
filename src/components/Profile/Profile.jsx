@@ -1,7 +1,8 @@
 import React from 'react';
-import MyPosts from './MyPosts/MyPosts';
+// import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo'
 import './profile.css'
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return (
@@ -10,7 +11,7 @@ const Profile = (props) => {
                 <img src="https://marin.ru/ai/1000/geo.113.thumb.big/fiji-main(pics.1).jpg" alt="icon" className="header__img"/>
             </div>
             <ProfileInfo/>
-            <MyPosts profile={props.profile} dispatch={props.dispatch}/>
+            <MyPostsContainer state={props.state} dispatch={props.dispatch}/>
         </div>
     )
 };

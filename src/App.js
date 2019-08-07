@@ -18,7 +18,7 @@ const App = (props) => {
             <Nav/>
             <div className="content">
                 <Route exact path='/' component={Homepage}/>
-                <Route path='/profile' render={ () => <Profile profile={props.state.profilePage} dispatch={props.dispatch} />}/>
+                <Route path='/profile' render={ () => <Profile state={props.state} dispatch={props.dispatch} />}/>
                 <Route path='/dialogs' render={ () => (<Dialogs dialogs={props.state.dialogsPage} dispatch={props.dispatch} />)}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
