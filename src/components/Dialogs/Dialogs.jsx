@@ -2,6 +2,7 @@ import React from 'react';
 import './dialogs.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+
 const Dialogs = (props) => {
     
     let dialogsElements = props.dialogs.dialogsData.map( elem => <Dialog name={elem.name} id={elem.id} />);
@@ -30,7 +31,7 @@ const Dialogs = (props) => {
                 {messagesElements}
             </div>
             <div className="dialogs__new-message">
-                <textarea onChange={ updateNewMessageText } ref={newMessage} className="new-message__input" value={props.dialogs.newMessageText}></textarea>
+                <textarea onChange={ updateNewMessageText } ref={newMessage} className="new-message__input" value={props.dialogs.newMessageText}> </textarea>
                 <button onClick={ addMessage }>Отправить</button>
             </div>
         </div>

@@ -11,15 +11,15 @@ import {Route} from 'react-router-dom';
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 
-const App = (props) => {
+const App = () => {
     return (
         <div className="app-wrapper">
             <Header/>
             <Nav/>
             <div className="content">
                 <Route exact path='/' component={Homepage}/>
-                <Route path='/profile' render={ () => <Profile state={props.state} dispatch={props.dispatch} />}/>
-                <Route path='/dialogs' render={ () => (<DialogsContainer state={props.state} dispatch={props.dispatch} />)}/>
+                <Route path='/profile' render={ () => <Profile />}/>
+                <Route path='/dialogs' render={ () => (<DialogsContainer />)}/>
                 <Route path='/news' component={News}/>
                 <Route path='/music' component={Music}/>
                 <Route path='/settings' component={Settings}/>
