@@ -49,6 +49,7 @@ const dialogsReducer = (state = initialState, action) => {
 
         case updateNewMessageText:
             state.newMessageText = action.newMessageText;
+            debugger;
             return state;
 
         default:

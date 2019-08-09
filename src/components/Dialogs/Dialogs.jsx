@@ -20,6 +20,7 @@ const Dialogs = (props) => {
     let updateNewMessageText = (e) => {
         let text = e.target.value;
         props.updateNewMessageText(text);
+        debugger;
     };
 
     return (
