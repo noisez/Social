@@ -1,0 +1,34 @@
+.users__container {
+  .users__item {
+    display: flex;
+  }
+
+  .item__left {
+    margin-right: 50px;
+  }
+  .item__avatar {}
+  .item__photo {
+    width: 100px;
+  }
+  .item__follow {}
+
+  .item__right {
+    display: flex;
+    max-width: 250px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .right__info {
+    display: flex;
+    flex-direction: column;
+  }
+  .item__name {}
+  .item__status {}
+  .right__location {
+    display: flex;
+    flex-direction: column;
+  }
+  .item__country {}
+  .item__city {}
+}

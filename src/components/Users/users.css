@@ -1,0 +1,26 @@
+.users__container .users__item {
+  display: flex;
+}
+.users__container .item__left {
+  margin-right: 50px;
+}
+.users__container .item__photo {
+  width: 100px;
+}
+.users__container .item__right {
+  display: flex;
+  max-width: 250px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.users__container .right__info {
+  display: flex;
+  flex-direction: column;
+}
+.users__container .right__location {
+  display: flex;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=users.css.map */
