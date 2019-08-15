@@ -1,55 +1,67 @@
 import React from 'react';
 import './users.css';
+import * as axios from 'axios';
+import userDefaultImg from '../../assets/images/824388_man_512x512.png';
 
-const Users = (props) => {
+class Users extends React.Component {
 
-    if ( props.users.length === 0 ) {
-        props.setUsers(
-            [
-                {id: 1, photoSrc: 'https://www.shareicon.net/data/128x128/2016/09/02/824388_man_512x512.png',followed: false, fullName: 'Serg', status: 'I am a boss', location: {city: 'Kiev', country: 'Ukraine'}},
-                {id: 2, photoSrc: 'https://www.shareicon.net/data/128x128/2016/09/02/824388_man_512x512.png', followed: true, fullName: 'Dmitriy', status: 'I am a boss too', location: {city: 'Minsk', country: 'Belarus'}},
-                {id: 3, photoSrc: 'https://www.shareicon.net/data/128x128/2016/09/02/824388_man_512x512.png', followed: false, fullName: 'Alex', status: 'I am a boss too too', location: {city: 'Moscow', country: 'Russia'}}
-            ]
-        );
+    componentDidMount() {
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then( response => {
+            this.props.setUsers(response.data.items);
+        } );
     }
 
-    return (
-        <div className='users__container'>
-            {
-                props.users.map( user =>
-                    <div key={user.id} className='users__item'>
-                        <div className='item__left'>
-                            <div className='item__avatar'>
-                                <img className='item__photo' src={user.photoSrc} />
+    // usersShow = () => {
+    //     axios.get("https://social-network.samuraijs.com/api/1.0/users").then( response => {
+    //         this.props.setUsers(response.data.items);
+    //     } );
+    // };
+
+    render() {
+
+
+
+        return (
+            <div className='users__container'>
+                {
+                    this.props.users.map( user =>
+                        <div key={user.id} className='users__item'>
+                            <div className='item__left'>
+                                <div className='item__avatar'>
+                                    <img alt='icon' className='item__photo' src={ user.photos.small ? user.photos.small : userDefaultImg } />
+                                </div>
+                                <div className='item__follow'>
+                                    { user.followed ?  <button onClick={ () => {this.props.unfollow(user.id)} } className='item__btn'>Unfollow</button>
+                                        : <button onClick={ () => {this.props.follow(user.id)} } className='item__btn'>Follow</button> }
+                                </div>
                             </div>
-                            <div className='item__follow'>
-                                { user.followed ?  <button onClick={ () => {props.unfollow(user.id)} } className='item__btn'>Unfollow</button>
-                                    : <button onClick={ () => {props.follow(user.id)} } className='item__btn'>Follow</button> }
-                            </div>
-                        </div>
-                        <div className='item__right'>
-                            <div className='right__info'>
+                            <div className='item__right'>
+                                <div className='right__info'>
                                 <span className='item__name'>
-                                    {user.fullName}
+                                    {user.name}
                                 </span>
-                                <span className='item__status'>
+                                    <span className='item__status'>
                                     {user.status}
                                 </span>
-                            </div>
-                            <div className='right__location'>
+                                </div>
+                                <div className='right__location'>
                                 <span className='item__country'>
-                                    {user.location.country}
+                                    {/*{user.location.country}*/}Country
                                 </span>
-                                <span className='item__city'>
-                                    {user.location.city}
+                                    <span className='item__city'>
+                                    {/*{user.location.city}*/}City
                                 </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            }
-        </div>
-    )
-};
+                    )
+                }
+                {/*<div className='users__showmore'>*/}
+                    {/*<button onClick={this.usersShow} className='showmore__btn'>Показать</button>*/}
+                {/*</div>*/}
+            </div>
+        )
+    }
+}
 
 export default Users;
