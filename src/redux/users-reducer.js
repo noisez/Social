@@ -7,7 +7,10 @@ export const unfollowAC = (userId) => ({type: unfollow, userId});
 export const setUsersAC = (users) => ({type: setUsers, users});
 
 let initialState = {
-    users: []
+    users: [],
+    pageSize: 5,
+    totalUsersCount: 19,
+    currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {

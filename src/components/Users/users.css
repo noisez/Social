@@ -1,3 +1,14 @@
+.users__container .pagination__list {
+  display: flex;
+}
+.users__container .pagination__item {
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.users__container .pagination__item_current {
+  font-weight: 600;
+}
 .users__container .users__item {
   display: flex;
 }

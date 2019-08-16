@@ -19,10 +19,27 @@ class Users extends React.Component {
 
     render() {
 
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let currentPage = this.props.currentPage;
+
+        let pages = [];
+
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
 
 
         return (
             <div className='users__container'>
+                <div className="users__pagination">
+                    <ul className="pagination__list">
+                        {pages.map( elem =>
+                            <li className={"pagination__item " + (elem === currentPage ? "pagination__item_current" : "" ) }>{elem}</li>
+                        )}
+                    </ul>
+                </div>
                 {
                     this.props.users.map( user =>
                         <div key={user.id} className='users__item'>

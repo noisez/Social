@@ -1,4 +1,18 @@
 .users__container {
+
+  .pagination__list {
+    display: flex;
+  }
+  .pagination__item {
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .pagination__item_current {
+    font-weight: 600;
+  }
+
+
   .users__item {
     display: flex;
   }
