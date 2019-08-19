@@ -1,5 +1,6 @@
 .users__container .pagination__list {
   display: flex;
+  flex-wrap: wrap;
 }
 .users__container .pagination__item {
   margin: 5px;

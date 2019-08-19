@@ -2,6 +2,7 @@
 
   .pagination__list {
     display: flex;
+    flex-wrap: wrap;
   }
   .pagination__item {
     margin: 5px;
