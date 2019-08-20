@@ -23,7 +23,7 @@ let initialState = {
         {id: 8, message: 'I have some new', type: 'sent', dialogId: 2},
         {id: 9, message: 'What is it?', type: 'recieved', dialogId: 2},
         {id: 10, message: 'I get a new job', type: 'sent', dialogId: 2},
-        {id: 1, message: 'Hey', type: 'sent', dialogId: 4},
+        {id: 11, message: 'Hey', type: 'sent', dialogId: 4},
         {id: 12, message: 'Whats wrong?', type: 'sent', dialogId: 4},
         {id: 13, message: 'I need some cash', type: 'recieved', dialogId: 4},
         {id: 14, message: 'What about the sum?', type: 'sent', dialogId: 4},

@@ -1,30 +1,32 @@
-const follow = 'follow';
-const unfollow = 'unfollow';
-const setUsers = 'setUsers';
-const setCurrentPage = 'setCurrentPage';
-const setTotalUsersCount = 'setTotalUsersCount';
+const FOLLOW = 'follow';
+const UNFOLLOW = 'unfollow';
+const SET_USERS = 'setUsers';
+const SET_CURRENT_PAGE = 'setCurrentPage';
+const SET_TOTAL_USSERS_COUNT = 'setTotalUsersCount';
+const TOGGLE_IS_FETCHING = 'toggleIsFetching';
 
-export const followAC = (userId) => ({type: follow, userId});
-export const unfollowAC = (userId) => ({type: unfollow, userId});
-export const setUsersAC = (users) => ({type: setUsers, users});
-export const setCurrentPageAC = (currentPage) => ({type:setCurrentPage, currentPage});
-export const setTotalUsersCountAC = (totalCount) => ({type:setTotalUsersCount, totalUsersCount: totalCount});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const setCurrentPage = (currentPage) => ({type:SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCount = (totalCount) => ({type:SET_TOTAL_USSERS_COUNT, totalUsersCount: totalCount});
+export const toggleIsFetching = (isFetching) => ({type:TOGGLE_IS_FETCHING, isFetching});
 
 
 let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 };
 
 const usersReducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case follow: {
+        case FOLLOW: {
             return {
                 ...state,
-                // users: [...state.users],
                 users: state.users.map( user => {
                     if (user.id === action.userId) {
                         return {...user, followed: true}
@@ -34,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
             };
         }
 
-        case unfollow: {
+        case UNFOLLOW: {
             return {
                 ...state,
                 // users: [...state.users],
@@ -47,25 +49,31 @@ const usersReducer = (state = initialState, action) => {
             };
         }
 
-        case setUsers: {
+        case SET_USERS: {
             return {
                 ...state,
-                // users: [...state.users, ...action.users]
                 users: action.users
             };
         }
 
-        case setCurrentPage: {
+        case SET_CURRENT_PAGE: {
             return {
                 ...state,
                 currentPage: action.currentPage
             };
         }
 
-        case setTotalUsersCount: {
+        case SET_TOTAL_USSERS_COUNT: {
             return {
                 ...state,
                 totalUsersCount: action.totalUsersCount
+            };
+        }
+
+        case TOGGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
             };
         }
 
