@@ -9,6 +9,7 @@
 }
 .users__container .pagination__item_current {
   font-weight: 600;
+  pointer-events: none;
 }
 .users__container .users__item {
   display: flex;

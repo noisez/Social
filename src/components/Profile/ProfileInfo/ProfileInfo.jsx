@@ -1,35 +1,42 @@
 import React from 'react';
 import './profile-info.css';
+import Preloader from "../../Common/Preloader/Preloader";
 
 const ProfileInfo = (props) => {
-    return (
-        <div className="profile__info">
-            <div className="info__avatar">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiCNRITS-4ALEzg_xLZwWmiv5-6UCGkuhKjgNRe6kQbJALzcAf" alt="icon" className="avatar__img"/>
+
+    if (!props.profile) {
+        return <Preloader/>
+    }
+    else {
+        return (
+            <div className="profile__info">
+                <div className="info__avatar">
+                    <img src={props.profile.photos.small} alt="icon" className="avatar__img"/>
+                </div>
+                <div className="info__personal">
+                    <p className="personal__name">{props.profile.fullName}</p>
+                    <ul className="personal__common">
+                        <li className="common__item">
+                            <span className="item__left">Date of birth: </span>
+                            <span className="item__right">16.02.-50</span>
+                        </li>
+                        <li className="common__item">
+                            <span className="item__left">Need of work: </span>
+                            <span className="item__right">{props.profile.lookingForAJob ? 'да' : 'нет'}</span>
+                        </li>
+                        <li className="common__item">
+                            <span className="item__left">Work descriprion: </span>
+                            <span className="item__right">{props.profile.lookingForAJobDescription}</span>
+                        </li>
+                        <li className="common__item">
+                            <span className="item__left">About me: </span>
+                            <span className="item__right">{props.profile.aboutMe}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div className="info__personal">
-                <p className="personal__name">Sergey K.</p>
-                <ul className="personal__common">
-                    <li className="common__item">
-                        <span className="item__left">Date of birth:</span>
-                        <span className="item__right">16.02.-50</span>
-                    </li>
-                    <li className="common__item">
-                        <span className="item__left">City:</span>
-                        <span className="item__right">Kiev</span>
-                    </li>
-                    <li className="common__item">
-                        <span className="item__left">Education:</span>
-                        <span className="item__right">High school</span>
-                    </li>
-                    <li className="common__item">
-                        <span className="item__left">Web site:</span>
-                        <span className="item__right">http://something.com</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    )
+        )
+    }
 };
 
 export default ProfileInfo;

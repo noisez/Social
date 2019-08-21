@@ -14,8 +14,6 @@
 }
 .nav .nav__link.active {
   color: #fff;
-  cursor: default;
-  pointer-events: none;
 }
 
 /*# sourceMappingURL=nav.css.map */
