@@ -1,6 +1,7 @@
 import React from 'react';
 import './profile-info.css';
 import Preloader from "../../Common/Preloader/Preloader";
+import userDefaultImg from "../../../assets/images/824388_man_512x512.png";
 
 const ProfileInfo = (props) => {
 
@@ -11,7 +12,7 @@ const ProfileInfo = (props) => {
         return (
             <div className="profile__info">
                 <div className="info__avatar">
-                    <img src={props.profile.photos.small} alt="icon" className="avatar__img"/>
+                    <img src={props.profile.photos.small ? props.profile.photos.small : userDefaultImg} alt="icon" className="avatar__img"/>
                 </div>
                 <div className="info__personal">
                     <p className="personal__name">{props.profile.fullName}</p>
