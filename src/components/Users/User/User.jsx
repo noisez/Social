@@ -14,14 +14,12 @@ const User = (props) => {
                 </NavLink>
                 <div className='item__follow'>
                     { props.user.followed ?  <button onClick={ () => {
-
                             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {
                                 withCredentials: true,
                                 headers: {
-                                    'API-KEY': '24c5b295-a055-4d49-af24-0e1af4dd5cf7'
+                                    'API-KEY': 'fb8722ab-f6b0-43d0-989d-9910d4eb8ca8'
                                 }
                             }).then( response => {
-                                debugger;
                                 if (response.data.resultCode === 0) {
                                     props.unfollow(props.user.id);
                                 }
@@ -33,10 +31,9 @@ const User = (props) => {
                             axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {}, {
                                 withCredentials: true,
                                 headers: {
-                                    'API-KEY': '24c5b295-a055-4d49-af24-0e1af4dd5cf7'
+                                    'API-KEY': 'fb8722ab-f6b0-43d0-989d-9910d4eb8ca8'
                                 }
                             }).then( response => {
-                                debugger;
                                 if (response.data.resultCode === 0) {
                                     props.follow(props.user.id);
                                 }
