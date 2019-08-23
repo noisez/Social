@@ -1,7 +1,7 @@
 import React from 'react';
 import userDefaultImg from "../../../assets/images/824388_man_512x512.png";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+import {usersApi} from "../../../api/api";
 
 const User = (props) => {
     return (
@@ -14,13 +14,8 @@ const User = (props) => {
                 </NavLink>
                 <div className='item__follow'>
                     { props.user.followed ?  <button onClick={ () => {
-                            axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': 'fb8722ab-f6b0-43d0-989d-9910d4eb8ca8'
-                                }
-                            }).then( response => {
-                                if (response.data.resultCode === 0) {
+                            usersApi.unfollowUser(props.user.id).then( data => {
+                                if (data.resultCode === 0) {
                                     props.unfollow(props.user.id);
                                 }
                             } );
@@ -28,18 +23,13 @@ const User = (props) => {
                         } } className='item__btn'>Unfollow</button>
                         : <button onClick={ () => {
 
-                            axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.user.id}`, {}, {
-                                withCredentials: true,
-                                headers: {
-                                    'API-KEY': 'fb8722ab-f6b0-43d0-989d-9910d4eb8ca8'
-                                }
-                            }).then( response => {
-                                if (response.data.resultCode === 0) {
+                            usersApi.followUser(props.user.id).then( data => {
+                                if (data.resultCode === 0) {
                                     props.follow(props.user.id);
                                 }
                             } );
-
                         } } className='item__btn'>Follow</button> }
+
                 </div>
             </div>
             <div className='item__right'>
