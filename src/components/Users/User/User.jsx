@@ -1,7 +1,6 @@
 import React from 'react';
 import userDefaultImg from "../../../assets/images/824388_man_512x512.png";
 import {NavLink} from "react-router-dom";
-import {usersApi} from "../../../api/api";
 
 const User = (props) => {
     return (
@@ -14,22 +13,10 @@ const User = (props) => {
                 </NavLink>
                 <div className='item__follow'>
                     { props.user.followed ?  <button disabled={props.followingInProgress} onClick={ () => {
-                            props.toggleFollowingInProgress(true);
-                            usersApi.unfollowUser(props.user.id).then( data => {
-                                if (data.resultCode === 0) {
-                                    props.unfollow(props.user.id);
-                                    props.toggleFollowingInProgress(false);
-                                }
-                            } );
+                            props.unfollow(props.user.id)
                         } } className='item__btn'>Unfollow</button>
                         : <button disabled={props.followingInProgress} onClick={ () => {
-                            props.toggleFollowingInProgress(true);
-                            usersApi.followUser(props.user.id).then( data => {
-                                if (data.resultCode === 0) {
-                                    props.follow(props.user.id);
-                                    props.toggleFollowingInProgress(false);
-                                }
-                            } );
+                            props.follow(props.user.id)
                         } } className='item__btn'>Follow</button> }
 
                 </div>

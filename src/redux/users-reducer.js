@@ -1,3 +1,5 @@
+import {usersApi} from "../api/api";
+
 const FOLLOW = 'follow';
 const UNFOLLOW = 'unfollow';
 const SET_USERS = 'setUsers';
@@ -6,8 +8,8 @@ const SET_TOTAL_USSERS_COUNT = 'setTotalUsersCount';
 const TOGGLE_IS_FETCHING = 'toggleIsFetching';
 const TOGGLE_FOLLOWING_IN_PROGRESS = 'followingInProgress';
 
-export const follow = (userId) => ({type: FOLLOW, userId});
-export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type:SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCount = (totalCount) => ({type:SET_TOTAL_USSERS_COUNT, totalUsersCount: totalCount});
@@ -88,6 +90,41 @@ const usersReducer = (state = initialState, action) => {
 
         default:
             return state;
+    }
+};
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersApi.getUsers(currentPage, pageSize).then( data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        } );
+    }
+};
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingInProgress(true));
+        usersApi.unfollowUser(userId).then( data => {
+            if (data.resultCode === 0) {
+                dispatch(unfollowSuccess(userId));
+                dispatch(toggleFollowingInProgress(false));
+            }
+        } );
+    }
+};
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingInProgress(true));
+        usersApi.followUser(userId).then( data => {
+            if (data.resultCode === 0) {
+                dispatch(followSuccess(userId));
+                dispatch(toggleFollowingInProgress(false));
+            }
+        } );
     }
 };
 

@@ -30,6 +30,7 @@ export const usersApi = {
     },
 
     checkUserAuth: () => {
-        return instance.get('auth/me').then( response => response.data)
+        return instance.get('auth/me')
+            .then( response => response.data)
     }
 };
