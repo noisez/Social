@@ -1,6 +1,7 @@
 .profile__info {
   padding: 5px;
   display: flex;
+  flex-wrap: wrap;
 }
 .profile__info .info__avatar {
   max-width: 150px;
@@ -11,6 +12,9 @@
 }
 .profile__info .common__item {
   margin-top: 10px;
+}
+.profile__info .profile__status {
+  width: 100%;
 }
 
 /*# sourceMappingURL=profile-info.css.map */

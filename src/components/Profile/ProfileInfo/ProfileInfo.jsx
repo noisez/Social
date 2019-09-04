@@ -2,6 +2,7 @@ import React from 'react';
 import './profile-info.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import userDefaultImg from "../../../assets/images/824388_man_512x512.png";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -35,6 +36,7 @@ const ProfileInfo = (props) => {
                         </li>
                     </ul>
                 </div>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             </div>
         )
     }

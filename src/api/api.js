@@ -30,7 +30,7 @@ export const profileApi = {
         return instance.get(`profile/${userId}`)
             .then( response => response.data )
     },
-    setUserStatus: (status) => {
+    updateUserStatus: (status) => {
         return instance.put(`profile/status`, { status: status })
             .then( response => response.data )
     },

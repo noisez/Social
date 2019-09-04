@@ -1,6 +1,7 @@
 .profile__info {
   padding: 5px;
   display: flex;
+  flex-wrap: wrap;
   .info__avatar {
     max-width: 150px;
     margin-right: 15px;
@@ -16,4 +17,7 @@
   }
   .item__left {}
   .item__right {}
+  .profile__status {
+    width: 100%;
+  }
 }

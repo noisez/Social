@@ -18,7 +18,7 @@ let initialState = {
     ],
     newPostText: '',
     profile: null,
-    status: ''
+    status: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -51,6 +51,9 @@ const profileReducer = (state = initialState, action) => {
         }
 
         case SET_USER_STATUS: {
+            if (action.status === null) {
+                action.status = 'no status'
+            }
             return {
                 ...state, status: action.status
             };
@@ -79,6 +82,20 @@ export const getStatus = (userId) => {
     return (dispatch) => {
         profileApi.getUserStatus(userId).then( data => {
             dispatch(setUserStatus(data));
+        } );
+    }
+};
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileApi.updateUserStatus(status).then( data => {
+            if (data.resultCode === 0) {
+                dispatch(setUserStatus(status));
+                console.log('true');
+            }
+            else {
+                console.log('false');
+            }
         } );
     }
 };
