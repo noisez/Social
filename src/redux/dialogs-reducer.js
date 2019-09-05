@@ -1,8 +1,6 @@
 const addMessage = 'addMessage';
-const updateNewMessageText = 'updateNewMessageText';
 
 export const addMessageActionCreator = (text) => ({type: addMessage, message: text});
-export const updateNewMessageTextActionCreator = (text) => ({type: updateNewMessageText, newMessageText: text});
 
 let initialState = {
     dialogsData: [
@@ -29,12 +27,12 @@ let initialState = {
         {id: 14, message: 'What about the sum?', type: 'sent', dialogId: 4},
         {id: 15, message: '1000$', type: 'recieved', dialogId: 4},
         {id: 16, message: 'No way!', type: 'sent', dialogId: 4}
-    ],
-    newMessageText: ''
+    ]
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch(action.type) {
+
         case addMessage: {
             let id = state.messagesData[state.messagesData.length - 1].id + 1;
             let newMessage = {
@@ -46,14 +44,6 @@ const dialogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 messagesData: [...state.messagesData, newMessage],
-                newMessageText: ''
-            };
-        }
-
-        case updateNewMessageText: {
-            return {
-                ...state,
-                newMessageText: action.newMessageText
             };
         }
 
