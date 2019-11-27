@@ -1,8 +1,14 @@
-.form-control.error textarea {
+.form-control.error textarea, .form-control.error input {
   border: 2px solid red;
 }
 .form-control.error span {
   color: red;
+}
+
+.form__summary-error {
+  width: fit-content;
+  padding: 5px;
+  border: 2px solid orange;
 }
 
 /*# sourceMappingURL=FormControl.css.map */
