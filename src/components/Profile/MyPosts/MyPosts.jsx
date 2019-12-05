@@ -12,7 +12,6 @@ const MyPosts = (props) => {
     let postsElements = props.postsData.map( elem => <Post key={elem.id} message={elem.message} likes={elem.likes}/> );
 
     let addNewPost = (value) => {
-        console.log(value.newPostBody);
         props.addPost(value.newPostBody);
 
     };

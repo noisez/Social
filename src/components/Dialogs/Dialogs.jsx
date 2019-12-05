@@ -28,7 +28,6 @@ const Dialogs = (props) => {
     let messagesElements = props.dialogs.messagesData.map( elem => <Message key={elem.id} message={elem.message} type={elem.type} />);
 
     let addNewMessage = (values) => {
-        console.log(values.newMessageBody);
         props.addMessage(values.newMessageBody);
     };
 

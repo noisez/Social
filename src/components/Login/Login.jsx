@@ -31,7 +31,7 @@ const LoginForm = (props) => {
     )
 };
 
-const LoginReduxForm = reduxForm({
+export const LoginReduxForm = reduxForm({
     // a unique name for the form
     form: "login"
 })(LoginForm);
@@ -39,7 +39,6 @@ const LoginReduxForm = reduxForm({
 const Login = (props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe);
-        console.log(formData.email, formData.password, formData.rememberMe);
     };
 
     if (props.isAuth) {

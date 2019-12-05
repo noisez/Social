@@ -54,16 +54,21 @@ const profileReducer = (state = initialState, action) => {
 };
 
 export const getProfile = (userId, authUserId) => {
-    return (dispatch) => {
-        if (!userId) {
-            userId = authUserId;
+    if (!userId && !authUserId) {
+        return false;
+    }
+    else {
+        return (dispatch) => {
             if (!userId) {
-                userId = 2;
+                userId = authUserId;
+                if (!userId) {
+                    userId = 2;
+                }
             }
+            profileApi.getUserProfile(userId).then( data => {
+                dispatch(setUserProfile(data));
+            } );
         }
-        profileApi.getUserProfile(userId).then( data => {
-            dispatch(setUserProfile(data));
-        } );
     }
 };
 
@@ -80,10 +85,6 @@ export const updateStatus = (status) => {
         profileApi.updateUserStatus(status).then( data => {
             if (data.resultCode === 0) {
                 dispatch(setUserStatus(status));
-                console.log('true');
-            }
-            else {
-                console.log('false');
             }
         } );
     }
